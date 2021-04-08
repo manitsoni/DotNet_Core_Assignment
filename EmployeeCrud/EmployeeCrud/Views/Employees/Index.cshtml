@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Employee List</h1>
 
 <p>
     <a class="btn btn-info" asp-action="Create"><i class="fa fa-plus"></i></a> | <a class="btn btn-danger" asp-action="Logout"><i class="fa fa-power-off"></i></a>
@@ -16,7 +16,7 @@
         <strong>@TempData["success"]</strong>
     </div>
 }
-<table class="table table-hover">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>
@@ -40,7 +40,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>

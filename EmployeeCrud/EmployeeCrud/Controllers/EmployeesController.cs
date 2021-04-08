@@ -22,7 +22,7 @@ namespace EmployeeCrud.Controllers
         }
         public List<string> Department = new List<string>()
         {
-            "Software Developement","Web Designer","Tester"
+            "Web Developer","Web Designer","Tester"
         };
         public List<string> Manager = new List<string>()
         {
