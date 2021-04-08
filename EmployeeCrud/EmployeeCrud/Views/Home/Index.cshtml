@@ -1,3 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<h1 class="h1">Login</h1>
+<form action="/Home/Login" method="post" class="form-group">
+    @if(TempData["msg"] != null)
+            {
+    <div class="alert alert-danger">
+        <strong>@TempData["msg"]</strong> 
+    </div>
+            }
+    <input type="email" class="form-control" name="Email" value="" id="Email" placeholder="Enter Email"/><br />
+    <input type="password" class="form-control" name="Password" value="" id="Password" placeholder="Enter Password"/><br />
+    <input type="submit" name="name" value="Login" class="btn btn-info" />
+</form>

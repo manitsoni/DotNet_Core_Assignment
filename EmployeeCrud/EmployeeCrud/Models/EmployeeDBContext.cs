@@ -10,5 +10,6 @@ namespace EmployeeCrud.Models
     {
          public EmployeeDBContext(DbContextOptions<EmployeeDBContext> dbContextOptions) : base(dbContextOptions) { }
          public System.Data.Entity.DbSet<Employee> Employee { get; set; }
+        public System.Data.Entity.DbSet<User> User { get; set; }
     }   
 }

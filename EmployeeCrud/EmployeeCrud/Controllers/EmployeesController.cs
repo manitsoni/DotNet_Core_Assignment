@@ -7,15 +7,17 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EmployeeCrud.Data;
 using EmployeeCrud.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace EmployeeCrud.Controllers
 {
     public class EmployeesController : Controller
     {
         private readonly EmployeeCrudContext _context;
-
+      
         public EmployeesController(EmployeeCrudContext context)
         {
+           
             _context = context;
         }
         public List<string> Department = new List<string>()
@@ -29,33 +31,63 @@ namespace EmployeeCrud.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            throw new Exception();
+            ViewBag.id = HttpContext.Session.GetInt32("Id");
+            if (ViewBag.id > 0)
+            {
+                return View(await _context.Employee.ToListAsync());
+            }
+            else
+            {
+                TempData["msg"] = "Please Login First Then You Should Navigate To Get Data";
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
 
         // GET: Employees/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            ViewBag.id = HttpContext.Session.GetInt32("Id");
+            if (ViewBag.id > 0)
             {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    return NotFound();
+                }
 
-            var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (employee == null)
+                var employee = await _context.Employee
+                    .FirstOrDefaultAsync(m => m.Id == id);
+                if (employee == null)
+                {
+                    return NotFound();
+                }
+
+                return View(employee);
+            }
+            else
             {
-                return NotFound();
+                TempData["msg"] = "Please Login First Then You Should Navigate To Details Of Data";
+                return RedirectToAction("Index", "Home");
             }
-
-            return View(employee);
+           
         }
 
         // GET: Employees/Create
         public IActionResult Create()
         {
-            ViewBag.dept = Department;
-            ViewBag.manager = Manager;
-            return View();
+            ViewBag.id = HttpContext.Session.GetInt32("Id");
+            if (ViewBag.id > 0)
+            {
+                ViewBag.dept = Department;
+                ViewBag.manager = Manager;
+                return View();
+            }
+            else
+            {
+                TempData["msg"] = "Please Login First Then You Should Navigate To Add Data";
+                return RedirectToAction("Index", "Home");
+            }
+           
         }
 
         // POST: Employees/Create
@@ -65,32 +97,53 @@ namespace EmployeeCrud.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Department,Salary,Manager,Phone,Email")] Employee employee)
         {
-            if (ModelState.IsValid)
+            ViewBag.id = HttpContext.Session.GetInt32("Id");
+            if (ViewBag.id > 0)
             {
-                employee.IsManager = true;
-                _context.Add(employee);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    employee.IsManager = true;
+                    _context.Add(employee);
+                    await _context.SaveChangesAsync();
+                    TempData["success"] = "New Employee Added Success.....";
+                    return RedirectToAction(nameof(Index));
+                }
+                return View(employee);
             }
-            return View(employee);
+            else
+            {
+                TempData["msg"] = "Please Login First Then You Should Navigate To Add Data";
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
 
         // GET: Employees/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            ViewBag.id = HttpContext.Session.GetInt32("Id");
+            if (ViewBag.id > 0)
             {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    return NotFound();
+                }
 
-            var employee = await _context.Employee.FindAsync(id);
-            if (employee == null)
-            {
-                return NotFound();
+                var employee = await _context.Employee.FindAsync(id);
+                if (employee == null)
+                {
+                    return NotFound();
+                }
+                ViewBag.dept = Department;
+                ViewBag.manager = Manager;
+                return View(employee);
             }
-            ViewBag.dept = Department;
-            ViewBag.manager = Manager;
-            return View(employee);
+            else
+            {
+                TempData["msg"] = "Please Login First Then You Should Navigate To Edit Data";
+                return RedirectToAction("Index", "Home");
+            }
+          
         }
 
         // POST: Employees/Edit/5
@@ -100,51 +153,72 @@ namespace EmployeeCrud.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Department,Salary,Manager,Phone,Email")] Employee employee)
         {
-            if (id != employee.Id)
+            ViewBag.id = HttpContext.Session.GetInt32("Id");
+            if (ViewBag.id > 0)
             {
-                return NotFound();
-            }
+                if (id != employee.Id)
+                {
+                    return NotFound();
+                }
 
-            if (ModelState.IsValid)
-            {
-                try
+                if (ModelState.IsValid)
                 {
-                    employee.IsManager = true;
-                    _context.Update(employee);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EmployeeExists(employee.Id))
+                    try
                     {
-                        return NotFound();
+                        employee.IsManager = true;
+                        _context.Update(employee);
+                        await _context.SaveChangesAsync();
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!EmployeeExists(employee.Id))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
+                    TempData["success"] = "Employee's Data Edit Success.....";
+                    return RedirectToAction(nameof(Index));
                 }
-                return RedirectToAction(nameof(Index));
+                return View(employee);
             }
-            return View(employee);
+            else
+            {
+                TempData["msg"] = "Please Login First Then You Should Navigate To Edit Data";
+                return RedirectToAction("Index", "Home");
+            }
+          
         }
 
         // GET: Employees/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            ViewBag.id = HttpContext.Session.GetInt32("Id");
+            if (ViewBag.id > 0)
             {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    return NotFound();
+                }
 
-            var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (employee == null)
+                var employee = await _context.Employee
+                    .FirstOrDefaultAsync(m => m.Id == id);
+                if (employee == null)
+                {
+                    return NotFound();
+                }
+
+                return View(employee);
+            }
+            else
             {
-                return NotFound();
+                TempData["msg"] = "Please Login First Then You Should Navigate To Delete Data";
+                return RedirectToAction("Index", "Home");
             }
-
-            return View(employee);
+            
         }
 
         // POST: Employees/Delete/5
@@ -152,10 +226,26 @@ namespace EmployeeCrud.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employee = await _context.Employee.FindAsync(id);
-            _context.Employee.Remove(employee);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            ViewBag.id = HttpContext.Session.GetInt32("Id");
+            if (ViewBag.id > 0)
+            {
+                var employee = await _context.Employee.FindAsync(id);
+                _context.Employee.Remove(employee);
+                await _context.SaveChangesAsync();
+                TempData["success"] = "Employee's Data Delete Success.....";
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["msg"] = "Please Login First Then You Should Navigate To Delete Data";
+                return RedirectToAction("Index", "Home");
+            }
+          
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
 
         private bool EmployeeExists(int id)

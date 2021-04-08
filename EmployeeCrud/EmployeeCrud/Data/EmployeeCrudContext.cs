@@ -15,5 +15,6 @@ namespace EmployeeCrud.Data
         }
 
         public DbSet<EmployeeCrud.Models.Employee> Employee { get; set; }
+        public DbSet<EmployeeCrud.Models.User> User { get; set; }
     }
 }

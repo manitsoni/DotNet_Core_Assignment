@@ -33,6 +33,10 @@ namespace EmployeeCrud
             services.AddSingleton<ILog, LogNLog>();
             services.AddDbContext<EmployeeCrudContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("EmployeeDB")));
+            services.AddSession(option =>
+            {
+                option.IdleTimeout = TimeSpan.FromMinutes(10);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,14 +56,14 @@ namespace EmployeeCrud
             app.UseStaticFiles();
             app.ConfigureExceptionHandler(logger);
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Employees}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
