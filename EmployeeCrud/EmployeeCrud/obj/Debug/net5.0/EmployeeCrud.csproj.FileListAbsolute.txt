@@ -158,3 +158,7 @@ D:\Docs\.Net Core\EmployeeCrud\EmployeeCrud\obj\Debug\net5.0\Razor\Views\Employe
 D:\Docs\.Net Core\EmployeeCrud\EmployeeCrud\obj\Debug\net5.0\Razor\Views\Employees\Details.cshtml.g.cs
 D:\Docs\.Net Core\EmployeeCrud\EmployeeCrud\obj\Debug\net5.0\Razor\Views\Employees\Edit.cshtml.g.cs
 D:\Docs\.Net Core\EmployeeCrud\EmployeeCrud\obj\Debug\net5.0\Razor\Views\Employees\Index.cshtml.g.cs
+D:\Docs\.Net Core\EmployeeCrud\EmployeeCrud\bin\Debug\net5.0\nlog.config
+D:\Docs\.Net Core\EmployeeCrud\EmployeeCrud\bin\Debug\net5.0\NLog.dll
+D:\Docs\.Net Core\EmployeeCrud\EmployeeCrud\bin\Debug\net5.0\NLog.Extensions.Logging.dll
+D:\Docs\.Net Core\EmployeeCrud\EmployeeCrud\bin\Debug\net5.0\NLog.Web.AspNetCore.dll

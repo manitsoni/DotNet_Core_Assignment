@@ -15,7 +15,7 @@ namespace EmployeeCrud.Models
         public string Department { get; set; }
         [Required]
         public decimal? Salary { get; set; }
-        [Required]
+       
         public bool? IsManager { get; set; }
         [Required]
         public string Manager { get; set; }

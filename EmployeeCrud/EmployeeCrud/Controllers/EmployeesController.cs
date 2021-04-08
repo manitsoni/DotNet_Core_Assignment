@@ -29,7 +29,7 @@ namespace EmployeeCrud.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Employee.ToListAsync());
+            throw new Exception();
         }
 
         // GET: Employees/Details/5
