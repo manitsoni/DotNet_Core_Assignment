@@ -29,10 +29,14 @@ namespace EmployeeCrud
             services.AddDbContext<EmployeeDBContext>(options => 
                 options.UseSqlServer(
                 Configuration.GetConnectionString("EmployeeDB")));
+
             services.AddControllersWithViews();
+
             services.AddSingleton<ILog, LogNLog>();
+
             services.AddDbContext<EmployeeCrudContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("EmployeeDB")));
+
             services.AddSession(option =>
             {
                 option.IdleTimeout = TimeSpan.FromMinutes(10);

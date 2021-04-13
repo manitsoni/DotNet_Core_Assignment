@@ -1,0 +1,17 @@
+D:\Docs\.Net Core\EMS\Business\bin\Debug\net5.0\Business.deps.json
+D:\Docs\.Net Core\EMS\Business\bin\Debug\net5.0\Business.dll
+D:\Docs\.Net Core\EMS\Business\bin\Debug\net5.0\ref\Business.dll
+D:\Docs\.Net Core\EMS\Business\bin\Debug\net5.0\Business.pdb
+D:\Docs\.Net Core\EMS\Business\bin\Debug\net5.0\BusinessEntities.dll
+D:\Docs\.Net Core\EMS\Business\bin\Debug\net5.0\Data.dll
+D:\Docs\.Net Core\EMS\Business\bin\Debug\net5.0\BusinessEntities.pdb
+D:\Docs\.Net Core\EMS\Business\bin\Debug\net5.0\Data.pdb
+D:\Docs\.Net Core\EMS\Business\obj\Debug\net5.0\Business.csprojAssemblyReference.cache
+D:\Docs\.Net Core\EMS\Business\obj\Debug\net5.0\Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\Docs\.Net Core\EMS\Business\obj\Debug\net5.0\Business.AssemblyInfoInputs.cache
+D:\Docs\.Net Core\EMS\Business\obj\Debug\net5.0\Business.AssemblyInfo.cs
+D:\Docs\.Net Core\EMS\Business\obj\Debug\net5.0\Business.csproj.CoreCompileInputs.cache
+D:\Docs\.Net Core\EMS\Business\obj\Debug\net5.0\Business.csproj.CopyComplete
+D:\Docs\.Net Core\EMS\Business\obj\Debug\net5.0\Business.dll
+D:\Docs\.Net Core\EMS\Business\obj\Debug\net5.0\ref\Business.dll
+D:\Docs\.Net Core\EMS\Business\obj\Debug\net5.0\Business.pdb

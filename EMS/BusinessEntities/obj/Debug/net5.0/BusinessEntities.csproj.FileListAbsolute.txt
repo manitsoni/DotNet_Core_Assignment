@@ -1,0 +1,12 @@
+D:\Docs\.Net Core\EMS\BusinessEntities\bin\Debug\net5.0\BusinessEntities.deps.json
+D:\Docs\.Net Core\EMS\BusinessEntities\bin\Debug\net5.0\BusinessEntities.dll
+D:\Docs\.Net Core\EMS\BusinessEntities\bin\Debug\net5.0\ref\BusinessEntities.dll
+D:\Docs\.Net Core\EMS\BusinessEntities\bin\Debug\net5.0\BusinessEntities.pdb
+D:\Docs\.Net Core\EMS\BusinessEntities\obj\Debug\net5.0\BusinessEntities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Docs\.Net Core\EMS\BusinessEntities\obj\Debug\net5.0\BusinessEntities.AssemblyInfoInputs.cache
+D:\Docs\.Net Core\EMS\BusinessEntities\obj\Debug\net5.0\BusinessEntities.AssemblyInfo.cs
+D:\Docs\.Net Core\EMS\BusinessEntities\obj\Debug\net5.0\BusinessEntities.csproj.CoreCompileInputs.cache
+D:\Docs\.Net Core\EMS\BusinessEntities\obj\Debug\net5.0\BusinessEntities.dll
+D:\Docs\.Net Core\EMS\BusinessEntities\obj\Debug\net5.0\ref\BusinessEntities.dll
+D:\Docs\.Net Core\EMS\BusinessEntities\obj\Debug\net5.0\BusinessEntities.pdb
+D:\Docs\.Net Core\EMS\BusinessEntities\obj\Debug\net5.0\BusinessEntities.csprojAssemblyReference.cache
